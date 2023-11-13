@@ -1,0 +1,29 @@
+name: Assemble Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  assemble-release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '17'
+
+    - name: Set up Android SDK
+      uses: actions/setup-android@v2
+      with:
+        sdk-version: '31.0.0'
+        ndk-version: '23.1.7779620'
+
+    - name: Build Release with Gradle
+      run: ./gradlew assembleRelease
