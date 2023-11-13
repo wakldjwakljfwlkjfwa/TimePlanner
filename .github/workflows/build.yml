@@ -3,7 +3,7 @@ name: Assemble Release
 on:
   push:
     branches:
-      - main
+      - ci
 
 jobs:
   assemble-release:
